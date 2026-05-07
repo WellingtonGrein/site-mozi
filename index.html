@@ -122,30 +122,21 @@
     #cupons { background:var(--light); }
     .cupons-intro { text-align:center; max-width:480px; font-size:1rem; color:var(--brown); opacity:.7; margin-bottom:2rem; line-height:1.7; }
     .cupons-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; max-width:860px; width:100%; }
-    .cupon { background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 16px rgba(212,96,122,.1); border:1.5px dashed var(--blush); position:relative; transition:transform .25s; }
-    .cupon:hover:not(.used) { transform:translateY(-4px); }
+    .cupon { background:#fff; border-radius:1rem; box-shadow:0 4px 16px rgba(212,96,122,.1); border:1.5px dashed var(--blush); position:relative; transition:transform .25s; }
+    .cupon-content { border-radius: 1rem; overflow: hidden; }
     .cupon-top { background:linear-gradient(135deg,var(--rose),var(--deep)); color:#fff; padding:1rem 1.2rem .8rem; display:flex; align-items:center; gap:.8rem; }
     .cupon-icon { font-size:1.8rem; }
     .cupon-title { font-weight:600; font-size:.95rem; line-height:1.3; }
     .cupon-body { padding:.8rem 1.2rem 1.2rem; }
     .cupon-desc { font-size:.85rem; color:#888; line-height:1.5; }
-    .cupon-footer { display:flex; align-items:center; justify-content:space-between; margin-top:.8rem; }
-    .cupon-code { font-family:monospace; font-size:.75rem; color:var(--blush); letter-spacing:.1em; }
-    .cupon-btn { background:var(--rose); color:#fff; border:none; border-radius:999px; padding:.35rem 1rem; font-size:.8rem; font-family:'Nunito',sans-serif; cursor:pointer; transition:background .2s,transform .2s; }
-    .cupon-btn:hover { background:var(--deep); transform:scale(1.05); }
-    .cupon.used { opacity:.5; pointer-events:none; }
-    .cupon.used::after { content:'USADO ✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; color:var(--rose); background:rgba(255,255,255,.6); border-radius:1rem; letter-spacing:.1em; }
-
-.scratch-pad {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      cursor: crosshair;
-      touch-action: none; /* Isso é muito importante para o celular não rolar a tela enquanto a pessoa raspa */
-    }
+    .cupon-footer { display:flex; align-items:center; justify-content:center; margin-top:.8rem; }
+    .cupon-code { font-family:'Dancing Script',cursive; font-size:1.5rem; color:var(--rose); font-weight:bold; }
+    
+    /* ESTILO DA RASPADINHA */
+    .scratch-pad { position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; border-radius:1rem; cursor:pointer; transition: opacity 0.5s ease; touch-action: none; }
+    footer { background:var(--brown); color:rgba(255,255,255,.5); text-align:center; padding:3rem 2rem; font-size:.85rem; line-height:2; }
+    footer .heart { color:var(--rose); }
+    footer .big { font-family:'Dancing Script',cursive; font-size:1.5rem; color:var(--blush); display:block; margin-bottom:.5rem; }
     footer { background:var(--brown); color:rgba(255,255,255,.5); text-align:center; padding:3rem 2rem; font-size:.85rem; line-height:2; }
     footer .heart { color:var(--rose); }
     footer .big { font-family:'Dancing Script',cursive; font-size:1.5rem; color:var(--blush); display:block; margin-bottom:.5rem; }
