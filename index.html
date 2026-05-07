@@ -136,6 +136,16 @@
     .cupon.used { opacity:.5; pointer-events:none; }
     .cupon.used::after { content:'USADO ✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; color:var(--rose); background:rgba(255,255,255,.6); border-radius:1rem; letter-spacing:.1em; }
 
+.scratch-pad {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      cursor: crosshair;
+      touch-action: none; /* Isso é muito importante para o celular não rolar a tela enquanto a pessoa raspa */
+    }
     footer { background:var(--brown); color:rgba(255,255,255,.5); text-align:center; padding:3rem 2rem; font-size:.85rem; line-height:2; }
     footer .heart { color:var(--rose); }
     footer .big { font-family:'Dancing Script',cursive; font-size:1.5rem; color:var(--blush); display:block; margin-bottom:.5rem; }
@@ -271,14 +281,75 @@
 <section id="cupons">
   <h2 class="sec-title">seus <em>cupons</em> especiais</h2>
   <div class="sec-divider"></div>
-  <p class="cupons-intro">Esses são seus presentes de verdade — clique em "Resgatar" quando quiser usar 🎟️</p>
+  <p class="cupons-intro">Passe o dedo para raspar e descobrir os seus prêmios 🎟️✨</p>
   <div class="cupons-grid">
-    <div class="cupon" id="c1"><div class="cupon-top"><span class="cupon-icon">🎬</span><span class="cupon-title">Maratona do Seu Jeito</span></div><div class="cupon-body"><p class="cupon-desc">Hoje eu assisto o que você quiser, sem reclamar, sem sugerir outra coisa. Controle é seu. 📺</p><div class="cupon-footer"><span class="cupon-code">VALE-001</span><button class="cupon-btn" onclick="usarCupon('c1')">Resgatar</button></div></div></div>
-    <div class="cupon" id="c2"><div class="cupon-top"><span class="cupon-icon">🍕</span><span class="cupon-title">Janta Especial</span></div><div class="cupon-body"><p class="cupon-desc">Você escolhe o restaurante (ou o delivery). Sem votação, sem negociação — sua escolha, ponto final.</p><div class="cupon-footer"><span class="cupon-code">VALE-002</span><button class="cupon-btn" onclick="usarCupon('c2')">Resgatar</button></div></div></div>
-    <div class="cupon" id="c3"><div class="cupon-top"><span class="cupon-icon">🤗</span><span class="cupon-title">Abraço Extra Longo</span></div><div class="cupon-body"><p class="cupon-desc">Um abraço de no mínimo 10 minutos quando você precisar, sem pressa, sem celular. 💛</p><div class="cupon-footer"><span class="cupon-code">VALE-003</span><button class="cupon-btn" onclick="usarCupon('c3')">Resgatar</button></div></div></div>
-    <div class="cupon" id="c4"><div class="cupon-top"><span class="cupon-icon">☀️</span><span class="cupon-title">Dia 100% do Seu Jeito</span></div><div class="cupon-body"><p class="cupon-desc">Um dia inteiro onde o roteiro é só seu. Acordar tarde, passear, ficar em casa — você decide tudo.</p><div class="cupon-footer"><span class="cupon-code">VALE-004</span><button class="cupon-btn" onclick="usarCupon('c4')">Resgatar</button></div></div></div>
-    <div class="cupon" id="c5"><div class="cupon-top"><span class="cupon-icon">💆</span><span class="cupon-title">Massagem Surpresa</span></div><div class="cupon-body"><p class="cupon-desc">Massagem nas costas ou nos pés, quando você quiser. Sem reclamar do cansaço. Promessa. 🙌</p><div class="cupon-footer"><span class="cupon-code">VALE-005</span><button class="cupon-btn" onclick="usarCupon('c5')">Resgatar</button></div></div></div>
-    <div class="cupon" id="c6"><div class="cupon-top"><span class="cupon-icon">💌</span><span class="cupon-title">Sua Vontade Secreta</span></div><div class="cupon-body"><p class="cupon-desc">Aquela coisa que você sempre quer mas fica com vergonha de pedir. Pode usar. Sem julgamentos. 🌸</p><div class="cupon-footer"><span class="cupon-code">VALE-006</span><button class="cupon-btn" onclick="usarCupon('c6')">Resgatar</button></div></div></div>
+    
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">🎬</span><span class="cupon-title">Maratona do Seu Jeito</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Hoje eu assisto o que você quiser, sem reclamar, sem sugerir outra coisa. O controle é seu. 📺</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE MARATONA</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">🍕</span><span class="cupon-title">Janta Especial</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Você escolhe o restaurante (ou o delivery). Sem votação, sem negociação — sua escolha, ponto final.</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE COMIDA</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">🤗</span><span class="cupon-title">Abraço Extra Longo</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Um abraço de no mínimo 10 minutos quando você precisar, sem pressa, sem celular. 💛</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE CHAMEGO</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">☀️</span><span class="cupon-title">Dia 100% do Seu Jeito</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Um dia inteiro onde o roteiro é só seu. Acordar tarde, passear, ficar em casa — você decide tudo.</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE UM DIA</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">💆</span><span class="cupon-title">Massagem Surpresa</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Massagem nas costas ou nos pés, quando você quiser. Sem reclamar do cansaço. Promessa. 🙌</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE MASSAGEM</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
+    <div class="cupon">
+      <div class="cupon-content">
+        <div class="cupon-top"><span class="cupon-icon">💌</span><span class="cupon-title">Sua Vontade Secreta</span></div>
+        <div class="cupon-body">
+          <p class="cupon-desc">Aquela coisa que você sempre quer mas fica com vergonha de pedir. Pode usar. Sem julgamentos. 🌸</p>
+          <div class="cupon-footer"><span class="cupon-code">VALE TUDO</span></div>
+        </div>
+      </div>
+      <canvas class="scratch-pad"></canvas>
+    </div>
+
   </div>
 </section>
 
@@ -344,11 +415,77 @@
     cont.appendChild(p);
   }
 
-  function usarCupon(id) {
-    if (confirm('Tem certeza que quer usar este cupom? ✨')) {
-      document.getElementById(id).classList.add('used');
-    }
-  }
+  // LÓGICA DA RASPADINHA
+  window.addEventListener('load', () => {
+    const canvases = document.querySelectorAll('.scratch-pad');
+    
+    canvases.forEach(canvas => {
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      
+      // Ajusta o tamanho da área raspável para cobrir o cupom perfeitamente
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      // Pinta o fundo da raspadinha
+      ctx.fillStyle = '#D4607A'; // Cor rosa
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Adiciona o texto "Raspe Aqui"
+      ctx.font = 'bold 24px "Nunito", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('✨ Raspe Aqui ✨', canvas.width / 2, canvas.height / 2);
+
+      let isDrawing = false;
+
+      // Pega a posição do mouse ou do dedo no celular
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const evt = e.touches ? e.touches[0] : e;
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+
+      // Função que "apaga" a tinta
+      function scratch(e) {
+        if (!isDrawing) return;
+        e.preventDefault(); // Evita que a tela role no celular enquanto raspa
+        const pos = getPos(e);
+        ctx.globalCompositeOperation = 'destination-out'; // Isso faz apagar em vez de desenhar
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2); // Tamanho da "moeda" que raspa
+        ctx.fill();
+      }
+
+      // Verifica se já raspou o suficiente (40%) para revelar tudo
+      function checkScratched() {
+        isDrawing = false;
+        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let clearPixels = 0;
+        for (let i = 3; i < pixels.length; i += 4) {
+          if (pixels[i] === 0) clearPixels++;
+        }
+        if (clearPixels / (pixels.length / 4) > 0.4) {
+          canvas.style.opacity = '0'; // Faz sumir suavemente
+          setTimeout(() => canvas.remove(), 500); // Remove o elemento depois
+        }
+      }
+
+      // Eventos de Mouse (Computador)
+      canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+      canvas.addEventListener('mousemove', scratch);
+      canvas.addEventListener('mouseup', checkScratched);
+      canvas.addEventListener('mouseleave', () => { isDrawing = false; });
+
+      // Eventos de Toque (Celular)
+      canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: false });
+      canvas.addEventListener('touchmove', scratch, { passive: false });
+      canvas.addEventListener('touchend', checkScratched);
+    });
+  });
 
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
