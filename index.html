@@ -138,12 +138,39 @@
     footer .heart { color:var(--rose); }
     footer .big { font-family:'Dancing Script',cursive; font-size:1.5rem; color:var(--blush); display:block; margin-bottom:.5rem; }
 
+   .cupon.usado {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.cupon.usado .cupon-title::after {
+  content: " (UTILIZADO)";
+  color: #fff;
+  font-size: 0.8rem;
+}
+.btn-resgatar {
+  margin-top: 10px;
+  background: var(--rose);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s;
+}
+.btn-resgatar:hover {
+  transform: scale(1.05);
+}
     @media (max-width:600px) {
       .letter-wrap { padding:2rem 1.5rem; }
       section { padding:4rem 1.2rem; }
       .polaroid { width:150px; }
       .timeline-wrap::before { left:20px; }
     }
+    
   </style>
 </head>
 <body>
@@ -265,78 +292,92 @@
   </div>
 </section>
 
-<!-- CUPONS -->
 <section id="cupons">
   <h2 class="sec-title">seus <em>cupons</em> especiais</h2>
   <div class="sec-divider"></div>
   <p class="cupons-intro">Passe o dedo para raspar e descobrir os seus prêmios 🎟️✨</p>
   <div class="cupons-grid">
     
-    <div class="cupon">
+    <div class="cupon" id="cupom-maratona">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">🎬</span><span class="cupon-title">Maratona do Seu Jeito</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Hoje eu assisto o que você quiser, sem reclamar, sem sugerir outra coisa. O controle é seu. Apenas um filme ok?📺</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE MARATONA</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-maratona')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
 
-    <div class="cupon">
+    <div class="cupon" id="cupom-comida">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">🍕</span><span class="cupon-title">Janta Especial</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Você escolhe o restaurante (ou o delivery). Sem votação, sem negociação — sua escolha, ponto final.</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE COMIDA</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-comida')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
 
-    <div class="cupon">
+    <div class="cupon" id="cupom-chamego">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">🤗</span><span class="cupon-title">Abraço Extra Longo</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Um abraço de no mínimo 10 minutos quando você precisar, sem pressa, sem celular. 💛</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE CHAMEGO</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-chamego')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
 
-    <div class="cupon">
+    <div class="cupon" id="cupom-um-dia">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">☀️</span><span class="cupon-title">Dia 100% do Seu Jeito</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Um dia inteiro onde o roteiro é só seu. Acordar tarde, passear, ficar em casa — você decide tudo.</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE UM DIA</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-um-dia')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
 
-    <div class="cupon">
+    <div class="cupon" id="cupom-massagem">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">💆</span><span class="cupon-title">Massagem Surpresa</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Massagem nas costas ou nos pés, quando você quiser. Sem reclamar do cansaço. Promessa. 🙌</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE MASSAGEM</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-massagem')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
 
-    <div class="cupon">
+    <div class="cupon" id="cupom-tudo">
       <div class="cupon-content">
         <div class="cupon-top"><span class="cupon-icon">💌</span><span class="cupon-title">Sua Vontade Secreta</span></div>
         <div class="cupon-body">
           <p class="cupon-desc">Aquela coisa que você sempre quer mas fica com vergonha de pedir. Pode usar. Sem julgamentos. 🌸</p>
-          <div class="cupon-footer"><span class="cupon-code">VALE TUDO</span></div>
+          <div class="cupon-footer">
+            <button class="btn-resgatar" onclick="resgatarCupom('cupom-tudo')">Resgatar Cupom</button>
+          </div>
         </div>
       </div>
       <canvas class="scratch-pad"></canvas>
     </div>
+
+  </div>
+</section>
 
   </div>
 </section>
@@ -347,6 +388,8 @@
   <br>11 de maio · para sempre
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script>
   var musiciframe = null;
   var musicPlaying = false;
@@ -388,6 +431,68 @@
   });
 
   document.body.style.overflow = 'hidden';
+
+  // --- INÍCIO DO FIREBASE ---
+  const firebaseConfig = {
+    apiKey: "AIzaSyBSiHEkbY8y1Owp7QkqZHnQG6M7-edD_9Y",
+    authDomain: "aniversario-mozi.firebaseapp.com",
+    projectId: "aniversario-mozi",
+    storageBucket: "aniversario-mozi.firebasestorage.app",
+    messagingSenderId: "460336358698",
+    appId: "1:460336358698:web:d66b603db387fa2ab96a53",
+    measurementId: "G-8R6VT3DNSH"
+  };
+  
+  // Inicializa o banco de dados
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // 1. VERIFICAR QUAIS CUPONS JÁ FORAM USADOS AO CARREGAR O SITE
+  window.addEventListener('DOMContentLoaded', () => {
+    db.collection("cupons_resgatados").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        if (doc.data().usado) {
+          const cupomDiv = document.getElementById(doc.id);
+          if (cupomDiv) {
+            cupomDiv.classList.add("usado");
+            // Remove a raspadinha se já foi usado
+            const canvas = cupomDiv.querySelector('.scratch-pad');
+            if(canvas) canvas.remove();
+          }
+        }
+      });
+    }).catch(err => console.log("Erro ao carregar banco:", err));
+  });
+
+  // 2. FUNÇÃO DE RESGATE DO CUPOM
+  function resgatarCupom(idCupom) {
+    // Pede a senha
+    const senha = prompt("🔒 Digite nossa senha secreta para ativar o cupom:");
+    
+    if (senha === "180921") { // <-- A SENHA TÁ AQUI (18 de setembro de 21)
+      
+      // Salva no banco de dados
+      db.collection("cupons_resgatados").doc(idCupom).set({
+        usado: true,
+        dataResgate: new Date()
+      }).then(() => {
+        alert("💖 Cupom ativado com sucesso! É só me cobrar agora.");
+        document.getElementById(idCupom).classList.add("usado");
+        
+        // Tira a raspadinha caso ainda esteja na tela
+        const canvas = document.getElementById(idCupom).querySelector('.scratch-pad');
+        if(canvas) canvas.remove();
+
+      }).catch((error) => {
+        alert("Ops, deu um erro de conexão. Tenta de novo, mozi.");
+        console.error("Erro ao resgatar:", error);
+      });
+
+    } else if (senha !== null) {
+      alert("❌ Senha incorreta! (Dica: é a data do nosso primeiro beijo ddmmaa)");
+    }
+  }
+  // --- FIM DO FIREBASE ---
 
   // Pétalas
   const emojis = ['🌸','🌺','🌹','💮','🌷'];
