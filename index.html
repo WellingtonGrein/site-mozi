@@ -432,7 +432,7 @@
 
   document.body.style.overflow = 'hidden';
 
-  // --- INÍCIO DO FIREBASE ---
+ // --- INÍCIO DO FIREBASE ---
   const firebaseConfig = {
     apiKey: "AIzaSyBSiHEkbY8y1Owp7QkqZHnQG6M7-edD_9Y",
     authDomain: "aniversario-mozi.firebaseapp.com",
@@ -464,14 +464,13 @@
     }).catch(err => console.log("Erro ao carregar banco:", err));
   });
 
-  // 2. FUNÇÃO DE RESGATE DO CUPOM
+  // 2. FUNÇÃO DE RESGATE DO CUPOM (SEM SENHA)
   function resgatarCupom(idCupom) {
-    // Pede a senha
-    const senha = prompt("🔒 Digite nossa senha secreta para ativar o cupom:");
+    // Uma perguntinha simples só pra ela não esbarrar no botão sem querer
+    const querUsar = confirm("Tem certeza que quer gastar esse cupom agora, mozi? 👀");
     
-    if (senha === "180921") { // <-- A SENHA TÁ AQUI (18 de setembro de 21)
-      
-      // Salva no banco de dados
+    if (querUsar) {
+      // Salva no banco de dados direto
       db.collection("cupons_resgatados").doc(idCupom).set({
         usado: true,
         dataResgate: new Date()
@@ -487,9 +486,6 @@
         alert("Ops, deu um erro de conexão. Tenta de novo, mozi.");
         console.error("Erro ao resgatar:", error);
       });
-
-    } else if (senha !== null) {
-      alert("❌ Senha incorreta! (Dica: é a data do nosso primeiro beijo ddmmaa)");
     }
   }
   // --- FIM DO FIREBASE ---
